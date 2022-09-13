@@ -58,15 +58,14 @@ const setUpStaticAssets = (app) => {
 };
 
 const setupLocalization = async () => {
-  await i18next
-    .init({
-      lng: 'ru',
-      fallbackLng: 'en',
-      // debug: isDevelopment,
-      resources: {
-        ru,
-      },
-    });
+  await i18next.init({
+    lng: 'ru',
+    fallbackLng: 'en',
+    // debug: isDevelopment,
+    resources: {
+      ru,
+    },
+  });
 };
 
 const addHooks = (app) => {
@@ -83,28 +82,30 @@ const registerPlugins = (app) => {
   app.register(fastifyReverseRoutes);
   app.register(fastifyFormbody, { parser: qs.parse });
   app.register(fastifySecureSession, {
-    secret: process.env.SESSION_KEY,
+    secret: '4fe91796c30bd989d95b62dc46c7c3ba0b6aa2df2187400586a4121c54c53b85',
     cookie: {
       path: '/',
     },
   });
 
-  fastifyPassport.registerUserDeserializer(
-    (user) => app.objection.models.user.query().findById(user.id),
+  fastifyPassport.registerUserDeserializer((user) =>
+    app.objection.models.user.query().findById(user.id)
   );
   fastifyPassport.registerUserSerializer((user) => Promise.resolve(user));
   fastifyPassport.use(new FormStrategy('form', app));
   app.register(fastifyPassport.initialize());
   app.register(fastifyPassport.secureSession());
   app.decorate('fp', fastifyPassport);
-  app.decorate('authenticate', (...args) => fastifyPassport.authenticate(
-    'form',
-    {
-      failureRedirect: app.reverse('root'),
-      failureFlash: i18next.t('flash.authError'),
-    },
-  // @ts-ignore
-  )(...args));
+  app.decorate('authenticate', (...args) =>
+    fastifyPassport.authenticate(
+      'form',
+      {
+        failureRedirect: app.reverse('root'),
+        failureFlash: i18next.t('flash.authError'),
+      }
+      // @ts-ignore
+    )(...args)
+  );
 
   app.register(fastifyMethodOverride);
   app.register(fastifyObjectionjs, {
