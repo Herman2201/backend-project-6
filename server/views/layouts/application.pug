@@ -8,8 +8,8 @@ html(lang="en")
     link(href=assetPath('main.css') rel="stylesheet")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
   body.d-flex.flex-column.min-vh-100
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3
-      .container-fluid
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-3
+      .container
         a.navbar-brand(href=route('root'))= t('appName')
         button.navbar-toggler(data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent")
           span.navbar-toggler-icon
@@ -37,6 +37,6 @@ html(lang="en")
         block header
       block content
 
-    footer
-      .container.my-5.pt-4.border-top
-        a(target="_blank" href="https://ru.hexlet.io") Hexlet
+    footer.bg-dark
+      .container.my-2.pt-2
+        p.fs-4.text-light &copy; Hexlet Ltd, 2021
