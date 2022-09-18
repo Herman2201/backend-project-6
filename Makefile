@@ -15,7 +15,7 @@ prepare:
 start:
 	heroku local -f Procfile.dev
 
-start-backend: prepare
+start-backend:
 	npm run start -- --watch --verbose-watch --ignore-watch='node_modules .git .sqlite'
 
 start-frontend:
