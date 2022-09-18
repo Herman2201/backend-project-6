@@ -11,11 +11,7 @@
     "prebuild": "rm -rf dist",
     "test": "jest --verbose --runInBand",
     "build": "webpack",
-<<<<<<< HEAD
     "start-dev": "fastify start server/plugin.js -l debug -P"
-=======
-    "start": "fastify start server/plugin.js -l debug -P -a 0.0.0.0"
->>>>>>> 2654f2051f5e540df6ba97a00b51aaaee25c6a22
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -29,21 +25,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-<<<<<<< HEAD
     "url": "git+https://github.com/Herman2201/backend-project-6"
   },
   "bugs": {
     "url": "https://github.com/Herman2201/backend-project-6/issues"
   },
   "homepage": "https://github.com/Herman2201/backend-project-6.git#readme",
-=======
-    "url": "git+https://github.com/hexlet-boilerplates/fastify-nodejs-application.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hexlet-boilerplates/fastify-nodejs-application/issues"
-  },
-  "homepage": "https://github.com/hexlet-boilerplates/fastify-nodejs-application.git#readme",
->>>>>>> 2654f2051f5e540df6ba97a00b51aaaee25c6a22
   "dependencies": {
     "@vscode/sqlite3": "^5.0.8",
     "bootstrap": "^5.1.3",
