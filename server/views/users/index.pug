@@ -5,11 +5,21 @@ block content
     thead
       tr
         th= t('views.users.id')
+        th= t('views.users.username')
         th= t('views.users.email')
         th= t('views.users.createdAt')
+        th= t('views.users.move')
     tbody
       each user in users
         tr
           td= user.id
+          td= `${user.firstName} ${user.lastName}`
           td= user.email
           td= formatDate(user.createdAt)
+          if isAuthenticated()
+            td
+              .d-flex.flex-wrap
+                a(href=route('edit', { id: user.id })).btn.btn-primary.bg-gradient.me-1= t('views.users.control.edit')
+                form(action=route('delete', { id: user.id }))
+                  input(name="_method" type="hidden" value=method)
+                  input(type='submit' class="btn" value=t('views.submit.delete')).btn.btn-danger.bg-gradient

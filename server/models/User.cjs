@@ -17,7 +17,9 @@ module.exports = class User extends unique(BaseModel) {
       required: ['email', 'password'],
       properties: {
         id: { type: 'integer' },
-        email: { type: 'string', minLength: 1 },
+        firstName: { type: 'string', minLength: 1 },
+        lastName: { type: 'string', minLength: 1 },
+        email: { type: 'string', minLength: 5, pattern: '^\\S+@\\S+\\.\\S+$' },
         password: { type: 'string', minLength: 3 },
       },
     };
@@ -30,4 +32,4 @@ module.exports = class User extends unique(BaseModel) {
   verifyPassword(password) {
     return encrypt(password) === this.passwordDigest;
   }
-}
+};
